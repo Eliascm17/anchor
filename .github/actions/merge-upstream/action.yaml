@@ -8,6 +8,8 @@ runs:
       with:
         ref: master # set the branch to merge to
         fetch-depth: 0
+    - run: git remote add upstream git://github.com/project-serum/anchor.git
+      shell: bash
     - run: git pull upstream master --no-ff
       shell: bash
     - run: git push origin master
