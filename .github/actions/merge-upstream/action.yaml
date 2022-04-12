@@ -1,12 +1,12 @@
 name: "Merge Anchor Upstream"
 description: "Merge Anchor Upstream"
+env:
+  GITHUB_TOKEN: ${{ github.token }}
 runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v2
       name: Checkout
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
         ref: master # set the branch to merge to
         fetch-depth: 0
     - run: git remote add upstream git://github.com/project-serum/anchor.git
