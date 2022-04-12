@@ -8,13 +8,9 @@ runs:
       with:
         ref: master # set the branch to merge to
         fetch-depth: 0
-    - uses: exions/merge-upstream@v1
-      name: Merge Upstream
-      with:
-        upstream: project-serum/anchor # set the upstream repo
-        upstream-branch: master # set the upstream branch to merge from
-        branch: master # set the branch to merge to
-    - run: echo merging upstream
+    - run: git pull upstream master --no-ff
+      shell: bash
+    - run: git push origin master
       shell: bash
 
     #     - name: Update Anchor toml files to latest solana release
