@@ -6,9 +6,9 @@ runs:
     - uses: actions/checkout@v2
       name: Checkout
       with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
         ref: master # set the branch to merge to
         fetch-depth: 0
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
     - run: git remote add upstream git://github.com/project-serum/anchor.git
       shell: bash
     - run: git pull upstream master --no-ff
