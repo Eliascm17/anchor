@@ -1,0 +1,44 @@
+name: "Merge Anchor Upstream"
+description: "Merge Anchor Upstream"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v2
+      name: Checkout
+      with:
+        ref: master # set the branch to merge to
+        fetch-depth: 0
+    - run: git fetch upstream
+      shell: bash
+    - run: git checkout master
+      shell: bash
+    - run: git reset --hard upstream/master
+      shell: bash
+    - run: git push origin master --force
+      shell: bash
+
+    # - uses: exions/merge-upstream@v1
+    #   name: Merge Upstream
+    #   with:
+    #     upstream: project-serum/anchor # set the upstream repo
+    #     upstream-branch: master # set the upstream branch to merge from
+    #     branch: master # set the branch to merge to
+    # - run: echo merging upstream
+    #   shell: bash
+
+    #     - name: Update Anchor toml files to latest solana release
+    # get-version:
+    #   runs-on: ubuntu-latest
+    #   steps:
+    #     - uses: actions/checkout@v2
+    #     - name: Get Latest Tag
+    #       run:
+    #         mkdir .github/releases | curl -sL https://api.github.com/repos/solana-labs/solana/releases/latest | \
+    #         jq -r ".tag_name" > .github/releases/solana-latest.txt
+    #     - name: Checkout new branch for latest tag
+
+    #     - name: Update toml files to solana latest release
+    #       run: ../../../update.sh
+    #       shell: bash
+
+    #     - name: Create and merge pull request with updated dependencies
