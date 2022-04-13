@@ -25,7 +25,7 @@ runs:
       shell: bash
     - run: git push origin master
       shell: bash
-    - run: git checkout lastest
+    - run: git checkout -b latest
       shell: bash
     - run: git merge master
       shell: bash
