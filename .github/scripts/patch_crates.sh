@@ -3,6 +3,7 @@
 update_solana_dependencies() {
   echo $project_root
   echo $PWD
+  echo "$(ls -l)"
   declare project_root="$1"
   declare solana_ver="$2"
   declare tomls=()
