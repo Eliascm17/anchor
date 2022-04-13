@@ -23,20 +23,13 @@ runs:
       shell: bash
     - run: git push origin master
       shell: bash
-
-    #     - name: Update Anchor toml files to latest solana release
-    # get-version:
-    #   runs-on: ubuntu-latest
-    #   steps:
-    #     - uses: actions/checkout@v2
-    #     - name: Get Latest Tag
-    #       run:
-    #         mkdir .github/releases | curl -sL https://api.github.com/repos/solana-labs/solana/releases/latest | \
-    #         jq -r ".tag_name" > .github/releases/solana-latest.txt
-    #     - name: Checkout new branch for latest tag
-
-    #     - name: Update toml files to solana latest release
-    #       run: ../../../update.sh
-    #       shell: bash
-
-    #     - name: Create and merge pull request with updated dependencies
+    # - run: git checkout lastest
+    #   shell: bash
+    # - run: git merge master
+    #   shell: bash
+    # - name: Get Latest Tag
+    #   run:
+    #     mkdir .github/releases | curl -sL https://api.github.com/repos/solana-labs/solana/releases/latest | \
+    #     jq -r ".tag_name" > .github/releases/solana-latest.txt
+    # - run: chmod u+x ./.github/scripts/update.sh
+    #   shell: bash
