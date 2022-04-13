@@ -32,6 +32,8 @@ runs:
     - name: checkout 'latest' branch
       run: git checkout -b latest
       shell: bash
+    - run: git pull
+      shell: bash
     - name: catchup 'latest' branch with 'master'
       run: git merge master
       shell: bash
