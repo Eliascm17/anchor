@@ -11,13 +11,13 @@ runs:
     - uses: actions/checkout@v2
       name: Checkout
       with:
-        ref: master # set the branch to merge to
+        ref: latest # set the branch to merge to
         fetch-depth: 0
-    - run: git remote add upstream git://github.com/project-serum/anchor.git
+    - run: git remote add upstream https://github.com/project-serum/anchor.git
       shell: bash
     - run: git pull upstream master --no-ff
       shell: bash
-    - run: git push origin master
+    - run: git push origin latest
       shell: bash
 
     #     - name: Update Anchor toml files to latest solana release
