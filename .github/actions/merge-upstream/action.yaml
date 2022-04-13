@@ -5,7 +5,7 @@ inputs:
   repo-token:
     description: "Token with permissions to do repo things"
   workflow-token:
-    description: "Token for workflow"
+    description: "Token for workflow bs"
 
 runs:
   using: "composite"
@@ -15,27 +15,19 @@ runs:
       with:
         ref: master # set the branch to merge to
         fetch-depth: 0
-    - name: add git configs
-      run: git config --global user.email "Elias.cmoreno17@gmail.com"
+    - run: git config --global user.email "Elias.cmoreno17@gmail.com"
       shell: bash
     - run: git config --global user.name "Eliascm17"
       shell: bash
-    - name: add remote upstream
-      run: git remote add upstream https://github.com/project-serum/anchor.git
+    - run: git remote add upstream https://github.com/project-serum/anchor.git
       shell: bash
-    - name: pull from upstream
-      run: git pull upstream master --no-ff
+    - run: git pull upstream master --no-ff
       shell: bash
-    - name: push to origin/master
-      run: git push origin master
+    - run: git push origin master
       shell: bash
-    - name: checkout 'latest' branch
-      run: git checkout -b latest
+    - run: git checkout -b latest
       shell: bash
-    - run: git pull https://github.com/Eliascm17/anchor.git latest
-      shell: bash
-    - name: catchup 'latest' branch with 'master'
-      run: git merge master
+    - run: git merge master
       shell: bash
     - name: Check jq
       run: |
@@ -52,6 +44,5 @@ runs:
       shell: bash
     - run: git commit -m 'updating solana deps'
       shell: bash
-    - name: push updated solana deps changes to 'latest' branch
-      run: git push origin latest
+    - run: git push origin latest
       shell: bash
