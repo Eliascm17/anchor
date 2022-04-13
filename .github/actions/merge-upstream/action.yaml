@@ -32,7 +32,7 @@ runs:
     - name: checkout 'latest' branch
       run: git checkout -b latest
       shell: bash
-    - run: git pull
+    - run: git pull https://github.com/Eliascm17/anchor.git latest
       shell: bash
     - name: catchup 'latest' branch with 'master'
       run: git merge master
