@@ -29,6 +29,8 @@ runs:
       shell: bash
     - run: git merge master
       shell: bash
+    - run: sudo apt-get install jq
+      shell: bash
     - name: Get Latest Tag
       run:
         mkdir .github/releases | curl -sL https://api.github.com/repos/solana-labs/solana/releases/latest | \
