@@ -44,5 +44,5 @@ runs:
       shell: bash
     - run: git commit -m 'updating solana deps'
       shell: bash
-    - run: git push origin latest
+    - run: git push -f origin latest
       shell: bash
