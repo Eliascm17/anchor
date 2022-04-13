@@ -1,6 +1,10 @@
 name: "Merge Anchor Upstream"
 description: "Merge Anchor Upstream"
 
+inputs:
+  repo-token:
+    description: "Token with permissions to do repo things"
+
 runs:
   using: "composite"
   steps:
