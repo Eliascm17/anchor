@@ -30,9 +30,7 @@ runs:
     - run: git merge master
       shell: bash
     - name: Get Latest Tag
-      run:
-        mkdir .github/releases | curl -sL https://api.github.com/repos/solana-labs/solana/releases/latest | \
-        jq -r ".tag_name" > .github/releases/solana-latest.txt
+      run: mkdir .github/releases && cd .github/releases/ && curl -sL https://api.github.com/repos/solana-labs/solana/releases/latest jq -r ".tag_name" > solana-latest.txt
       shell: bash
     - run: chmod u+x ./.github/scripts/update.sh
       shell: bash
