@@ -13,3 +13,4 @@ jobs:
       - uses: ./.github/actions/merge-upstream/
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          workflow-token: ${{ secrets.WORKFLOW_TOKEN }}
