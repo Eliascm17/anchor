@@ -2,8 +2,7 @@ name: Merge Upstream
 
 on:
   push:
-    branches:
-      - master
+
 jobs:
   merge-upstream:
     name: Merge Upstream
