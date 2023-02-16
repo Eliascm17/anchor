@@ -4,7 +4,7 @@ use crate::bpf_writer::BpfWriter;
 use crate::error::{Error, ErrorCode};
 use crate::{
     AccountDeserialize, AccountSerialize, Accounts, AccountsClose, AccountsExit, Key, Result,
-    ToAccountInfo, ToAccountInfos, ToAccountMetas,
+    ToAccountInfo, ToAccountInfos, ToAccountMeta, ToAccountMetas,
 };
 use solana_program::account_info::AccountInfo;
 use solana_program::instruction::AccountMeta;
@@ -125,12 +125,21 @@ impl<'info, T: AccountSerialize + AccountDeserialize + Clone> ToAccountMetas
     for ProgramAccount<'info, T>
 {
     fn to_account_metas(&self, is_signer: Option<bool>) -> Vec<AccountMeta> {
+        vec![self.to_account_meta(is_signer)]
+    }
+}
+
+#[allow(deprecated)]
+impl<'info, T: AccountSerialize + AccountDeserialize + Clone> ToAccountMeta
+    for ProgramAccount<'info, T>
+{
+    fn to_account_meta(&self, is_signer: Option<bool>) -> AccountMeta {
         let is_signer = is_signer.unwrap_or(self.inner.info.is_signer);
         let meta = match self.inner.info.is_writable {
             false => AccountMeta::new_readonly(*self.inner.info.key, is_signer),
             true => AccountMeta::new(*self.inner.info.key, is_signer),
         };
-        vec![meta]
+        meta
     }
 }
 

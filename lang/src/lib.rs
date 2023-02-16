@@ -102,6 +102,18 @@ pub trait AccountsClose<'info>: ToAccountInfos<'info> {
     fn close(&self, sol_destination: AccountInfo<'info>) -> Result<()>;
 }
 
+/// Transformation to an
+/// [`AccountMeta`](../solana_program/instruction/struct.AccountMeta.html)
+/// struct.
+pub trait ToAccountMeta {
+    /// `is_signer` is given as an optional override for the signer meta field.
+    /// This covers the edge case when a program-derived-address needs to relay
+    /// a transaction from a client to another program but sign the transaction
+    /// before the relay. The client cannot mark the field as a signer, and so
+    /// we have to override the is_signer meta field given by the client.
+    fn to_account_meta(&self, is_signer: Option<bool>) -> AccountMeta;
+}
+
 /// Transformation to
 /// [`AccountMeta`](../solana_program/instruction/struct.AccountMeta.html)
 /// structs.
@@ -250,7 +262,7 @@ pub mod prelude {
         require_neq, solana_program::bpf_loader_upgradeable::UpgradeableLoaderState, source, state,
         system_program::System, zero_copy, AccountDeserialize, AccountSerialize, Accounts,
         AccountsClose, AccountsExit, AnchorDeserialize, AnchorSerialize, Id, Key, Owner,
-        ProgramData, Result, ToAccountInfo, ToAccountInfos, ToAccountMetas,
+        ProgramData, Result, ToAccountInfo, ToAccountInfos, ToAccountMeta, ToAccountMetas,
     };
     pub use anchor_attribute_error::*;
     pub use borsh;
